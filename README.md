@@ -1,125 +1,77 @@
-Product Management System
+# Product Management System
 
-Aplikasi web sederhana untuk mengelola data produk berbasis Laravel. Proyek ini dibuat untuk memenuhi tugas seleksi magang ARRE Tech.
+Aplikasi web berbasis Laravel untuk mencatat dan mengelola data produk.
 
-Fitur
+Dibuat untuk **Tes Magang ARRE Tech**.
 
-- Registrasi akun pengguna.
-- Login dan logout menggunakan Laravel Breeze.
-- Menampilkan daftar produk.
-- Menambahkan produk baru.
-- Melihat detail produk.
-- Mengedit data produk.
-- Menghapus data produk.
-- Validasi input produk.
-- Proteksi halaman manajemen produk menggunakan autentikasi.
-- Tampilan responsif dengan desain sederhana dan modern.
+## Fitur
 
-Teknologi
+- **Autentikasi:** registrasi, login, dan logout.
+- **Manajemen produk:** daftar, tambah, detail, edit, dan hapus produk.
+- **Validasi:** pemeriksaan data produk sebelum disimpan.
+- **Keamanan:** halaman produk hanya dapat diakses setelah login; kata sandi disimpan menggunakan hashing.
+- **Tampilan:** antarmuka sederhana dan responsif dengan Bootstrap 5.
 
-- PHP
-- Laravel
-- Laravel Breeze
-- Blade
-- Bootstrap 5
-- SQLite
-- Git
+## Teknologi
 
-Cara Instalasi
+| Teknologi | Penggunaan |
+|---|---|
+| PHP | Bahasa pemrograman |
+| Laravel | Kerangka kerja aplikasi |
+| SQLite | Basis data |
+| Bootstrap 5 | Tampilan antarmuka |
+| Laravel Breeze | Autentikasi |
 
-1. Clone repository:
+## Cara Menggunakan
 
-git clone URL_REPOSITORY
+1. Daftarkan akun melalui halaman **Register**, lalu login.
+2. Setelah login, aplikasi akan membuka halaman daftar produk.
+3. Gunakan **Tambah Produk** untuk memasukkan produk baru.
+4. Pilih **Detail** untuk melihat informasi produk.
+5. Pilih **Edit** untuk memperbarui data produk.
+6. Pilih **Hapus** untuk menghapus produk.
+7. Pilih **Logout** untuk keluar dari aplikasi.
 
-2. Masuk ke direktori proyek:
+## Struktur Proyek
 
-cd CrudArre
+| File atau folder | Fungsi |
+|---|---|
+| `app/Models/Product.php` | Model untuk data produk |
+| `app/Http/Controllers/ProductController.php` | Mengelola proses CRUD produk |
+| `database/migrations/` | Mendefinisikan struktur basis data |
+| `database/seeders/` | Menyediakan data awal produk |
+| `resources/views/products/` | Tampilan daftar, tambah, detail, dan edit produk |
+| `resources/views/auth/` | Tampilan autentikasi |
+| `resources/views/layouts/` | Layout aplikasi |
+| `routes/web.php` | Route aplikasi |
+| `routes/auth.php` | Route autentikasi |
 
-3. Install dependency:
+## Struktur Database
 
-composer install
-npm install
+### Tabel `produk`
 
-4. Buat file konfigurasi:
+| Kolom | Keterangan |
+|---|---|
+| `id` | Identitas unik produk |
+| `nama_produk` | Nama produk |
+| `kategori` | Kategori produk |
+| `harga` | Harga produk |
+| `stok` | Jumlah stok produk |
+| `deskripsi` | Deskripsi produk; boleh dikosongkan |
+| `created_at` | Waktu data dibuat |
+| `updated_at` | Waktu terakhir data diperbarui |
 
-cp .env.example .env
-php artisan key:generate
+### Tabel `users`
 
-5. Konfigurasikan database SQLite pada file ".env":
+| Kolom | Keterangan |
+|---|---|
+| `id` | Identitas unik pengguna |
+| `name` | Nama pengguna |
+| `email` | Alamat email pengguna |
+| `password` | Kata sandi yang disimpan dalam bentuk hash |
+| `created_at` | Waktu akun dibuat |
+| `updated_at` | Waktu terakhir akun diperbarui |
 
-DB_CONNECTION=sqlite
+## Pembuat
 
-Pastikan file "database/database.sqlite" tersedia.
-
-6. Jalankan migration:
-
-php artisan migrate
-
-7. Build frontend:
-
-npm run build
-
-8. Jalankan aplikasi:
-
-php artisan serve
-
-Cara Menggunakan
-
-1. Buka aplikasi melalui browser.
-2. Pilih Register untuk membuat akun baru.
-3. Login menggunakan email dan password yang telah didaftarkan.
-4. Setelah login, pengguna dapat mengakses halaman manajemen produk.
-5. Pilih Tambah Produk untuk memasukkan data produk.
-6. Pilih Detail untuk melihat informasi produk.
-7. Pilih Edit untuk memperbarui data produk.
-8. Pilih Hapus untuk menghapus produk.
-9. Gunakan tombol Logout untuk keluar dari aplikasi.
-
-Struktur Database
-
-1. Tabel Produk ("produk")
-
-Digunakan untuk menyimpan informasi produk.
-
-Kolom| Keterangan
-"id"| Identitas unik produk
-"nama_produk"| Nama produk
-"kategori"| Kategori produk
-"harga"| Harga produk
-"stok"| Jumlah persediaan produk
-"deskripsi"| Keterangan produk
-"created_at"| Waktu data dibuat
-"updated_at"| Waktu terakhir data diperbarui
-
-2. Tabel Pengguna ("users")
-
-Digunakan untuk menyimpan informasi akun pengguna.
-
-Kolom| Keterangan
-"id"| Identitas unik pengguna
-"name"| Nama pengguna
-"email"| Alamat email pengguna
-"password"| Kata sandi yang disimpan menggunakan hashing
-"created_at"| Waktu akun dibuat
-"updated_at"| Waktu terakhir akun diperbarui
-
-Struktur Proyek
-
-File / Folder| Fungsi
-"app/Models/Product.php"| Model data produk
-"app/Http/Controllers/ProductController.php"| Mengatur proses CRUD produk
-"database/migrations/"| Mengatur struktur tabel database
-"database/seeders/"| Menyediakan data awal produk jika tersedia
-"resources/views/products/"| Menyimpan halaman manajemen produk
-"resources/views/auth/"| Menyimpan halaman autentikasi
-"resources/views/layouts/"| Menyimpan layout utama aplikasi
-"routes/web.php"| Mengatur route aplikasi
-"routes/auth.php"| Mengatur route autentikasi Breeze
-"README.md"| Dokumentasi proyek
-
-Pembuat
-
-Dony Dwi Ristanto (donyristanto14@gmail.com)
-
-Project: Product Management System
-Keperluan: Tes Magang ARRE Tech
+**Dony Dwi Ristanto** · [donyristanto14@gmail.com]
